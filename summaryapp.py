@@ -9,12 +9,7 @@ st.set_page_config(page_title="Buat Ringkasan dari Youtube atau Website")
 st.title("Buat Ringkasan dari Youtube atau Website")
 st.subheader("URL Ringkasan")
 
-# Get the GROQ API Key and url(YT or Website) to summarized
-import os
-from dotenv import load_dotenv
-load_dotenv()
-os.environ['GROQ_API_KEY'] = os.getenv('GROQ_API_KEY')
-api_key = os.getenv('GROQ_API_KEY')
+api_key = st.secrets["GROQ_API_KEY"]
 llm = ChatGroq(
     groq_api_key=api_key, 
     model_name="llama-3.3-70b-versatile",
@@ -63,4 +58,5 @@ if st.button("Buat Ringkasan"):
 
         except Exception as e:
             st.exception(e)
+
     
