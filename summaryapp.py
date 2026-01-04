@@ -20,13 +20,24 @@ llm = ChatGroq(
 
 generic_url=st.text_input("URL", label_visibility="collapsed")
 language_input=st.selectbox("Pilih Bahasa",
-                            ("Indonesia", "English", "Japanese", "Sundanese"))
+                            ("Indonesia", "English"))
 
 # Prompt template
 prompt_template = """
-Provide a summary of the following content in points shape and summary with {language} language:
-Content: {text}
+You are a professional assistant that summarizes content accurately.
+Please provide a comprehensive summary of the text provided below.
+
+The entire summary MUST be written in {language} language.
+Format the output as follows:
+1. A brief executive summary (2-3 sentences).
+2. Key points in a bulleted list.
+
+TEXT TO SUMMARIZE:
+"{text}"
+
+SUMMARY IN {language}:
 """
+
 prompt = PromptTemplate(template=prompt_template, input_variables=["text", "language"])
 
 if st.button("Buat Ringkasan"):
@@ -42,7 +53,9 @@ if st.button("Buat Ringkasan"):
             with st.spinner("sedang meringkas..."):
                 # loading the website or youtube data
                 if 'youtube.com' in generic_url:
-                    loader = YoutubeLoader.from_youtube_url(generic_url, add_video_info=False)
+                    loader = YoutubeLoader.from_youtube_url(generic_url, 
+                                                            add_video_info=False, 
+                                                            language=["id", "en"])
                 else:
                     loader = UnstructuredURLLoader(urls=[generic_url], ssl_verify=False, 
                                                    headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"})
@@ -60,3 +73,4 @@ if st.button("Buat Ringkasan"):
             st.exception(e)
 
     
+
