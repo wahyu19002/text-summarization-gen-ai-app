@@ -7,11 +7,11 @@ Aplikasi ini mendukung ringkasan dalam bahasa indonesia maupun inggris sesuai pi
 - Multi-language Output: Hasil ringkasan dapat disesuaikan ke dalam bahasa target (Indonesia atau Inggris).
 - Fast Inference: Menggunakan model Open Source Llama 3.3-70b di infrastruktur Groq untuk kecepatan tinggi.
 
-- **Teknologi yang digunakan**
-- - Framework : Streamlit
-  - Orchestration : Langchain
-  - LLM : GROQ (Model : llama-3.3-70b-versatile)
-  - LoaderL YoutubeLoader & UnstructuredURLLoader
+**Teknologi yang digunakan**
+- Framework : Streamlit
+- Orchestration : Langchain
+- LLM : GROQ (Model : llama-3.3-70b-versatile)
+- LoaderL YoutubeLoader & UnstructuredURLLoader
 
-  **KUNJUNGI DEMO APLIKASINYA DISINI**
-  https://text-summarization-gen-ai-app-cvtcapsktegfxj7kxaejux.streamlit.app/
+**KUNJUNGI DEMO APLIKASINYA DISINI**
+https://text-summarization-gen-ai-app-cvtcapsktegfxj7kxaejux.streamlit.app/
